@@ -1,0 +1,562 @@
+/* =========================================================
+  Supercar Template Styles
+  CSS Version: 1.0 The Enter
+========================================================= */
+
+:root {
+  --sc-header-bg: color-mix(in oklab, var(--bw-bg-surface) 82%, transparent);
+  --sc-panel-bg: color-mix(in oklab, var(--bw-bg-panel) 86%, transparent);
+  --sc-glow: 0 1.125rem 3.125rem -1.375rem color-mix(in oklab, var(--bw-accent) 55%, transparent);
+  --sc-grid-gap: clamp(0.75rem, 1.25vw, 1.25rem);
+}
+
+[data-theme="dark"] {
+  --sc-header-bg: color-mix(in oklab, var(--bw-bg-surface) 70%, transparent);
+  --sc-panel-bg: color-mix(in oklab, var(--bw-bg-panel) 72%, transparent);
+  --sc-glow: 0 1.25rem 3.5rem -1.625rem color-mix(in oklab, var(--bw-accent) 65%, transparent);
+}
+
+/* =========================================================
+  Header / Brand
+========================================================= */
+
+.sc-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: var(--sc-header-bg);
+  backdrop-filter: blur(0.875rem);
+}
+
+.sc-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+
+.sc-brand-mark {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: grid;
+  place-items: center;
+  border-radius: 0.75rem;
+  background: linear-gradient(135deg, color-mix(in oklab, var(--bw-accent) 85%, #000), color-mix(in oklab, var(--bw-brand) 82%, #000));
+  color: #fff;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  box-shadow: var(--sc-glow);
+}
+
+.sc-brand-text {
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+/* =========================================================
+  Hero
+========================================================= */
+
+.sc-hero {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(2.25rem, 4vw, 4rem) 0;
+}
+
+.sc-hero::before {
+  content: "";
+  position: absolute;
+  inset: -40% -30%;
+  background:
+    radial-gradient(45% 35% at 20% 20%, color-mix(in oklab, var(--bw-accent) 28%, transparent), transparent 70%),
+    radial-gradient(35% 25% at 70% 35%, color-mix(in oklab, var(--bw-info) 22%, transparent), transparent 72%),
+    radial-gradient(40% 30% at 50% 75%, color-mix(in oklab, var(--bw-success) 18%, transparent), transparent 70%);
+  filter: blur(1.125rem);
+  transform: rotate(-8deg);
+  pointer-events: none;
+}
+
+.sc-hero-grid {
+  position: relative;
+  display: grid;
+  gap: clamp(1.25rem, 3vw, 2.25rem);
+  grid-template-columns: 1fr;
+  align-items: start;
+}
+
+@media (min-width: 1024px) {
+  .sc-hero-grid {
+    grid-template-columns: 1.05fr 0.95fr;
+    align-items: center;
+  }
+}
+
+.sc-kicker {
+  font-size: 0.85rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--bw-text-muted);
+}
+
+.sc-hero-title {
+  margin: 0.65rem 0 0;
+  font-size: clamp(2rem, 3vw + 1rem, 3.25rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+
+.sc-hero-subtitle {
+  margin: 0.9rem 0 0;
+  max-width: 52ch;
+  color: var(--bw-text-secondary);
+  font-size: clamp(1rem, 1vw + 0.85rem, 1.15rem);
+}
+
+.sc-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.sc-stat {
+  border: 1px solid var(--bw-border);
+  background: var(--sc-panel-bg);
+  border-radius: 1rem;
+  padding: 0.85rem 0.95rem;
+  box-shadow: var(--bw-shadow-sm);
+}
+
+.sc-stat-value {
+  font-weight: 800;
+  font-size: 1.15rem;
+}
+
+.sc-stat-label {
+  margin-top: 0.1rem;
+  font-size: 0.85rem;
+  color: var(--bw-text-muted);
+}
+
+.sc-hero-panel {
+  border: 1px solid var(--bw-border);
+  background: var(--sc-panel-bg);
+  border-radius: 1.125rem;
+  overflow: hidden;
+  box-shadow: var(--bw-shadow-lg);
+}
+
+.sc-hero-media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  background: linear-gradient(135deg, color-mix(in oklab, var(--bw-brand) 75%, #000), color-mix(in oklab, var(--bw-accent) 62%, #000));
+}
+
+.sc-hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  mix-blend-mode: screen;
+  opacity: 0.94;
+}
+
+.sc-hero-badges {
+  position: absolute;
+  left: 1rem;
+  bottom: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.sc-hero-card {
+  padding: 1.1rem 1.2rem 1.25rem;
+  background: color-mix(in oklab, var(--bw-bg-surface) 80%, transparent);
+  border-top: 1px solid var(--bw-border);
+}
+
+.sc-hero-card-title {
+  font-weight: 800;
+  font-size: 1.15rem;
+}
+
+.sc-hero-card-meta {
+  margin-top: 0.35rem;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.sc-price {
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: color-mix(in oklab, var(--bw-accent) 85%, var(--bw-text-primary));
+}
+
+.sc-price-xl {
+  font-size: clamp(1.5rem, 1.25vw + 1.2rem, 2.05rem);
+}
+
+/* =========================================================
+  Sections / Cards
+========================================================= */
+
+.sc-section-title {
+  font-size: clamp(1.25rem, 1vw + 1rem, 1.75rem);
+  margin: 0;
+}
+
+.sc-card {
+  border: 1px solid var(--bw-border);
+  background: color-mix(in oklab, var(--bw-bg-surface) 90%, transparent);
+}
+
+/* =========================================================
+  Filters
+========================================================= */
+
+.sc-filters {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sc-grid-gap);
+}
+
+@media (min-width: 768px) {
+  .sc-filters {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .sc-filters {
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    align-items: end;
+  }
+}
+
+.sc-filter-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 1024px) {
+  .sc-filter-actions {
+    justify-content: flex-end;
+  }
+}
+
+/* =========================================================
+  Inventory Grid / Cards
+========================================================= */
+
+.sc-grid {
+  display: grid;
+  gap: var(--sc-grid-gap);
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+@media (min-width: 640px) {
+  .sc-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (min-width: 1024px) {
+  .sc-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+.sc-car {
+  border: 1px solid var(--bw-border);
+  background: color-mix(in oklab, var(--bw-bg-surface) 88%, transparent);
+  border-radius: 1.125rem;
+  overflow: hidden;
+  box-shadow: var(--bw-shadow-sm);
+  transition: var(--bw-transition);
+  cursor: pointer;
+}
+
+.sc-car:hover {
+  transform: translateY(-0.125rem);
+  box-shadow: var(--bw-shadow-lg);
+  border-color: color-mix(in oklab, var(--bw-accent) 35%, var(--bw-border));
+}
+
+.sc-car-media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  background: linear-gradient(135deg, color-mix(in oklab, var(--bw-brand) 70%, #000), color-mix(in oklab, var(--bw-accent) 56%, #000));
+}
+
+.sc-car-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0.95;
+  mix-blend-mode: screen;
+}
+
+.sc-car-badges {
+  position: absolute;
+  left: 0.9rem;
+  bottom: 0.9rem;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.sc-car-body {
+  padding: 1rem 1.05rem 1.1rem;
+}
+
+.sc-car-title {
+  font-weight: 800;
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.sc-car-meta {
+  margin-top: 0.35rem;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.sc-car-specs {
+  margin-top: 0.75rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+.sc-mini {
+  border: 1px solid var(--bw-border);
+  border-radius: 0.875rem;
+  padding: 0.55rem 0.65rem;
+  background: var(--sc-panel-bg);
+}
+
+.sc-mini .k {
+  font-size: 0.75rem;
+  color: var(--bw-text-muted);
+}
+
+.sc-mini .v {
+  margin-top: 0.1rem;
+  font-weight: 800;
+  font-size: 0.95rem;
+}
+
+/* =========================================================
+  Details
+========================================================= */
+
+.sc-details {
+  display: grid;
+  grid-template-columns: 1fr;
+  overflow: hidden;
+}
+
+@media (min-width: 1024px) {
+  .sc-details { grid-template-columns: 1.05fr 0.95fr; }
+}
+
+.sc-details-media {
+  background: linear-gradient(135deg, color-mix(in oklab, var(--bw-brand) 75%, #000), color-mix(in oklab, var(--bw-accent) 60%, #000));
+  border-bottom: 1px solid var(--bw-border);
+}
+
+@media (min-width: 1024px) {
+  .sc-details-media {
+    border-bottom: none;
+    border-right: 1px solid var(--bw-border);
+  }
+}
+
+.sc-details-image {
+  width: 100%;
+  height: 100%;
+  min-height: 17.5rem;
+  object-fit: cover;
+  display: block;
+  mix-blend-mode: screen;
+  opacity: 0.95;
+}
+
+.sc-details-body {
+  padding: clamp(1rem, 1.25vw, 1.25rem);
+}
+
+.sc-details-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.sc-details-title {
+  margin: 0.2rem 0 0;
+  font-size: clamp(1.35rem, 1vw + 1.15rem, 1.85rem);
+  font-weight: 900;
+}
+
+.sc-details-price {
+  text-align: right;
+}
+
+.sc-specs {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem;
+}
+
+@media (min-width: 768px) {
+  .sc-specs { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+.sc-spec {
+  border: 1px solid var(--bw-border);
+  border-radius: 1rem;
+  background: var(--sc-panel-bg);
+  padding: 0.75rem 0.85rem;
+}
+
+.sc-spec .k {
+  font-size: 0.78rem;
+  color: var(--bw-text-muted);
+}
+
+.sc-spec .v {
+  margin-top: 0.15rem;
+  font-weight: 900;
+}
+
+.sc-features {
+  margin-top: 1rem;
+  border-top: 1px solid var(--bw-border);
+  padding-top: 0.9rem;
+}
+
+/* =========================================================
+  Contact
+========================================================= */
+
+.sc-contact-grid {
+  display: grid;
+  gap: var(--sc-grid-gap);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 1024px) {
+  .sc-contact-grid { grid-template-columns: 1.1fr 0.9fr; align-items: start; }
+}
+
+.sc-contact-fields {
+  display: grid;
+  gap: var(--sc-grid-gap);
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+@media (min-width: 768px) {
+  .sc-contact-fields { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+.sc-contact-message {
+  grid-column: 1 / -1;
+}
+
+.sc-contact-panel {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.sc-contact-box {
+  border: 1px solid var(--bw-border);
+  border-radius: 1.125rem;
+  background: var(--sc-panel-bg);
+  padding: 0.95rem 1rem;
+}
+
+.sc-contact-value {
+  margin-top: 0.2rem;
+  font-weight: 800;
+}
+
+.sc-contact-map {
+  border: 1px dashed color-mix(in oklab, var(--bw-border) 80%, transparent);
+  border-radius: 1.125rem;
+  min-height: 13.75rem;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(50% 50% at 30% 30%, color-mix(in oklab, var(--bw-accent) 18%, transparent), transparent 70%),
+    radial-gradient(40% 40% at 70% 60%, color-mix(in oklab, var(--bw-info) 14%, transparent), transparent 72%),
+    linear-gradient(180deg, color-mix(in oklab, var(--bw-bg-panel) 90%, transparent), transparent);
+}
+
+.sc-map-label {
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: var(--bw-text-muted);
+}
+
+/* =========================================================
+  Footer
+========================================================= */
+
+.sc-footer {
+  padding: 1.25rem 0;
+  background: color-mix(in oklab, var(--bw-bg-surface) 85%, transparent);
+}
+
+.sc-footer-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .sc-footer-grid { grid-template-columns: 1.2fr 1fr 0.8fr; }
+}
+
+.sc-footer-brand {
+  font-weight: 900;
+  letter-spacing: 0.01em;
+}
+
+.sc-footer-links {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+@media (min-width: 768px) {
+  .sc-footer-links { justify-content: center; }
+}
+
+.sc-footer-links a {
+  color: var(--bw-text-secondary);
+  text-decoration: none;
+  border-bottom: 1px dashed transparent;
+  padding-bottom: 0.15rem;
+}
+
+.sc-footer-links a:hover {
+  color: var(--bw-text-primary);
+  border-bottom-color: color-mix(in oklab, var(--bw-accent) 55%, transparent);
+}
+
+.sc-footer-meta {
+  display: grid;
+  justify-items: start;
+}
+
+@media (min-width: 768px) {
+  .sc-footer-meta { justify-items: end; }
+}
